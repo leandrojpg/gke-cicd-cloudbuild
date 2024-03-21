@@ -1,12 +1,12 @@
 ## Gera a imagem docker da app1 utilizando o Dockerfile 
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'us-east4-docker.pkg.dev/_PROJECT_ID/gke-repo/quickstart-image', './app1' ]
+  args: ['build', '-t', 'us-west2-docker.pkg.dev/_PROJECT_ID/gke-repo/quickstart-image', './app1' ]
   id: 'Build Docker Image'
 
 ## Empurra a image gerada para o repositorio 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-east4-docker.pkg.dev/_PROJECT_ID/gke-repo/quickstart-image' ]
+  args: ['push', 'us-west2-docker.pkg.dev/_PROJECT_ID/gke-repo/quickstart-image' ]
   id: 'Push Docker Image'
 
 ## Define a pipeline dentro do diretorio deploy linha 20
@@ -19,10 +19,10 @@ steps:
   - -xe
   - -c
   - |
-    gcloud deploy apply --file deploy/pipeline.yaml --region=us-east4
-    gcloud deploy apply --file deploy/prod.yaml --region=us-east4
+    gcloud deploy apply --file deploy/pipeline.yaml --region=us-west2
+    gcloud deploy apply --file deploy/prod.yaml --region=us-west2
 
-    gcloud deploy releases create 'app-release-${SHORT_SHA}' --delivery-pipeline=gke-cicd-pipeline --region=us-east4 --from-k8s-manifest=./kubernetes/app1.yaml
+    gcloud deploy releases create 'app-release-${SHORT_SHA}' --delivery-pipeline=gke-cicd-pipeline --region=us-west2 --from-k8s-manifest=./kubernetes/app1.yaml
 
 
 options:
