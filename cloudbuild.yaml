@@ -1,12 +1,12 @@
 ## Gera a imagem docker da app1 utilizando o Dockerfile 
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'us-west2-docker.pkg.dev/$_PROJECT_ID/gke-repo/quickstart-image', './app1' ]
+  args: ['build', '-t', 'gcr.io-docker.pkg.dev/$_PROJECT_ID/gke-repo/quickstart-image', './app1' ]
   id: 'Build Docker Image'
 
 ## Empurra a image gerada para o repositorio 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-west2-docker.pkg.dev/$_PROJECT_ID/gke-repo/quickstart-image' ]
+  args: ['push', 'gcr.io/$_PROJECT_ID/gke-repo/quickstart-image' ]
   id: 'Push Docker Image'
 
 ## Cria a pipeline dentro do diretorio deploy linha 20
