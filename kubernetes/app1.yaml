@@ -14,10 +14,11 @@ spec:
     spec:
       containers:
         - name: my-container
-          image: us-west2-docker.pkg.dev/long-arcadia-413520/gke-repo/quickstart-image
+          image: gcr.io/long-arcadia-413520/gke-repo/quickstart-image
           ports:
             - containerPort: 8080
 
+---
 apiVersion: v1
 kind: Service
 metadata:
