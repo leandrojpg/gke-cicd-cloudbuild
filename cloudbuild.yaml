@@ -14,6 +14,10 @@ steps:
 ## Define qual deployment executar na linha 22 nesse caso prod onde tem todos os parametros definidos tal qual a localização do cluster
 ## Pra cada ambiente é necessário especificar o cluster gke sera aplicado
 ## Importante a conta de servico usada para a trigger no cloudbuild deve ser a de compute@developer do seu projeto
+## As linhas 32 e 33 devem ser obrigatorias
+## No arquivo pipeline.yaml as tags devem ser unicas para cada ambiente ou seja, se tiver um ambiente prod apenas tageie para prod e nunca prod e dev, pois ele irá tentar fazer nos dois
+
+
 - name: 'google/cloud-sdk:latest'
   entrypoint: 'sh'
   args:
