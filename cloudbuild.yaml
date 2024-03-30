@@ -37,7 +37,7 @@ steps:
 
 substitutions:
   _PROJECT_ID : long-arcadia-413520
-  _REGION : long-arcadia-413520
+  _REGION : us-west2
 
 options:
   logging: CLOUD_LOGGING_ONLY
