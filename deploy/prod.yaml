@@ -7,4 +7,4 @@ metadata:
 description: prod
 requireApproval: false
 gke:
-  cluster: projects/long-arcadia-413520/locations/us-east4-a/clusters/meu-cluster02
+  cluster: projects/long-arcadia-413520/locations/us-east4/clusters/meu-cluster02
