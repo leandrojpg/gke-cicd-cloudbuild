@@ -9,7 +9,7 @@ steps:
 
 ## Empurra a image gerada para o repositorio 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/$_PROJECT_ID/gke-repo/quickstart-image' ]
+  args: ['push', 'gcr.io/$_PROJECT_ID/gke-repo/quickstart-image-prd' ]
   id: 'Push Docker Image'
 
 ## 1 - pipeline.yaml cria a pipeline que define o nome dela e em qual ambiente executar dev prod ou hml esse arquivo olha para o prod.yaml que deve ter o mesmo nome do metadata no caso "prod"
