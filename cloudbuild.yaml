@@ -1,11 +1,10 @@
 ## Gera a imagem docker da app1 utilizando o Dockerfile 
 ## Algumas regioes podem dar erro com o repositorio de imagens, se isso ocorrer troque-o
 ## Atencao para a regiao onde o trigger será criado tente colocar todos na mesma regiao
-#
  
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/$_PROJECT_ID/gke-repo/quickstart-image', './app1' ]
+  args: ['build', '-t', 'gcr.io/$_PROJECT_ID/gke-repo/quickstart-image-prd', './app1' ]
   id: 'Build Docker Image'
 
 ## Empurra a image gerada para o repositorio 
@@ -13,16 +12,17 @@ steps:
   args: ['push', 'gcr.io/$_PROJECT_ID/gke-repo/quickstart-image' ]
   id: 'Push Docker Image'
 
-## 1 - pipeline.yaml cria a pipeline que define o nome dela e em qual ambiente executar dev prod ou hml
+## 1 - pipeline.yaml cria a pipeline que define o nome dela e em qual ambiente executar dev prod ou hml esse arquivo olha para o prod.yaml que deve ter o mesmo nome do metadata no caso "prod"
 ## 2 - prod.yaml é o apontamento  em qual ambiente ou recurso  será executado no caso em um cluster kubernetes
-## 3 - release é a aplicação direta da aplicação ou imagem docker aplicada no ambiente 
-## Cria a pipeline dentro do diretorio deploy linha 20
+## 3 - release é a aplicação direta da imagem docker no ambiente no caso aqui um gke
+
+##### Explicacao do arquivo cloudbuild.yaml ######
+## Cria a pipeline dentro do diretorio deploy linha 35
 ## Define qual deployment executar na linha 22 nesse caso prod onde tem todos os parametros definidos tal qual a localização do cluster
 ## Pra cada ambiente é necessário especificar o cluster gke sera aplicado
 ## Importante a conta de servico usada para a trigger no cloudbuild deve ser a de compute@developer do seu projeto
-## As linhas 32 e 33 devem ser obrigatorias
-## No arquivo pipeline.yaml as tags devem ser unicas para cada ambiente ou seja, se tiver um ambiente prod apenas tageie para prod e nunca prod e dev, pois ele irá tentar 
-# fazer nos dois ambiente de acordo com as tags
+## As linhas 44 e 45 devem ser obrigatorias
+## No arquivo pipeline.yaml as tags devem ser unicas para cada ambiente ou seja, se tiver um ambiente prod apenas tageie para prod e nunca prod e dev, pois ele irá tentar fazer nos dois ambiente de acordo com as tags
 
 
 - name: 'google/cloud-sdk:latest'
