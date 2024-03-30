@@ -1,5 +1,7 @@
 ## Gera a imagem docker da app1 utilizando o Dockerfile 
-## Algumas regioes podem dar erro com o repositorio de imagens, se isso ocorrer troque-o 
+## Algumas regioes podem dar erro com o repositorio de imagens, se isso ocorrer troque-o
+## Atencao para a regiao onde o trigger será criado tente colocar todos na mesma regiao
+ 
 steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/$_PROJECT_ID/gke-repo/quickstart-image', './app1' ]
