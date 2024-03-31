@@ -6,6 +6,6 @@ metadata:
   annotations: {}
   labels: {}
 description: prod
-requireApproval: false
+requireApproval: true
 gke:
   cluster: projects/long-arcadia-413520/locations/us-east4/clusters/meu-cluster02
